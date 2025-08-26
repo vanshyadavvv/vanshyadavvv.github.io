@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Schedule Visualizer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+        }
+        
+        .schedule-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 900px) {
+            .schedule-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-title {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .time-block {
+            display: flex;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .time {
+            background: #34495e;
+            color: white;
+            padding: 15px;
+            min-width: 120px;
+            text-align: center;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .activity {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+        
+        .study-details {
+            background: #e8f4fc;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #bdc3c7;
+        }
+        
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+        
+        .icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .sleep {
+            background: #9b59b6;
+        }
+        
+        .gym {
+            background: #e74c3c;
+        }
+        
+        .lunch {
+            background: #f39c12;
+        }
+        
+        .study {
+            background: #2ecc71;
+        }
+        
+        .free {
+            background: #3498db;
+        }
+        
+        .college {
+            background: #1abc9c;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .stat-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            margin: 0 10px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Study Schedule Visualizer</h1>
+            <p class="subtitle">A structured approach to your daily routine</p>
+        </header>
+        
+        <div class="schedule-container">
+            <div class="card">
+                <h2 class="card-title">Daily Timeline</h2>
+                
+                <div class="time-block">
+                    <div class="time sleep">11PM - 6AM</div>
+                    <div class="activity"><span class="icon">🛌</span> SLEEP (7 hours)</div>
+                </div>
+                
+                <div class="time-block">
+                    <div class="time gym">6AM - 7:30AM</div>
+                    <div class="activity"><span class="icon">💪</span> GYM (1.5 hours)</div>
+                </div>
+                
+                <div class="time-block">
+                    <div class="time lunch">7:30AM - 9AM</div>
+                    <div class="activity"><span class="icon">🍲</span> LUNCH + GETTING READY (1.5 hours)</div>
+                </div>
+                
+                <div class="time-block">
+                    <div class="time study">9AM - 6PM</div>
+                    <div class="activity"><span class="icon">📚</span> STUDY POINT (9 hours)</div>
+                </div>
+                
+                <div class="study-details">
+                    <h3>Study Point Breakdown:</h3>
+                    <div class="detail-item">
+                        <span>Classes</span>
+                        <span>4 hours</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Revision</span>
+                        <span>2 hours</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>G.K. Study</span>
+                        <span>1.5 hours</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>NCERT Reading</span>
+                        <span>1 hour</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>YT Videos</span>
+                        <span>0.5 hours</span>
+                    </div>
+                </div>
+                
+                <div class="time-block">
+                    <div class="time free">6PM - 8PM</div>
+                    <div class="activity"><span class="icon">🎮</span> FREE TIME + DINNER (2 hours)</div>
+                </div>
+                
+                <div class="time-block">
+                    <div class="time college">8PM - 10:30PM</div>
+                    <div class="activity"><span class="icon">🎓</span> COLLEGE + REMAINING STUDY (2.5 hours)</div>
+                </div>
+                
+                <div class="time-block">
+                    <div class="time free">10:30PM - 11PM</div>
+                    <div class="activity"><span class="icon">😌</span> FREE TIME (0.5 hours)</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title">Schedule Analysis</h2>
+                
+                <div class="study-details">
+                    <h3>Time Allocation</h3>
+                    <div class="detail-item">
+                        <span>Total Sleep</span>
+                        <span>7 hours</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Total Study</span>
+                        <span>11.5 hours</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Focused Study</span>
+                        <span>9 hours</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>College Work</span>
+                        <span>2.5 hours</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Physical Activity</span>
+                        <span>1.5 hours</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Free Time</span>
+                        <span>2.5 hours</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Meal Preparation</span>
+                        <span>1.5 hours</span>
+                    </div>
+                </div>
+                
+                <div class="study-details">
+                    <h3>Productivity Tips</h3>
+                    <ul style="padding-left: 20px; margin-top: 10px;">
+                        <li style="margin-bottom: 10px;">Consider using the Pomodoro technique during study blocks (25 min focus, 5 min break)</li>
+                        <li style="margin-bottom: 10px;">Schedule the most challenging tasks during your peak energy hours</li>
+                        <li style="margin-bottom: 10px;">Use free time for physical movement to counter long study sessions</li>
+                        <li>Ensure study environment is well-lit and free from distractions</li>
+                    </ul>
+                </div>
+                
+                <div class="study-details">
+                    <h3>Efficiency Suggestions</h3>
+                    <ul style="padding-left: 20px; margin-top: 10px;">
+                        <li style="margin-bottom: 10px;">Combine similar tasks to reduce context switching</li>
+                        <li style="margin-bottom: 10px;">Use meal prep strategies to save time during the day</li>
+                        <li style="margin-bottom: 10px;">Consider audio learning during gym sessions</li>
+                        <li>Review and adjust schedule weekly based on what's working</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">17</div>
+                <div class="stat-label">Waking Hours</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">11.5</div>
+                <div class="stat-label">Study Hours</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">2.5</div>
+                <div class="stat-label">Free Hours</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Sleep Hours</div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Created with code • Study Schedule Visualizer • 2023</p>
+        </footer>
+    </div>
+</body>
+</html>
