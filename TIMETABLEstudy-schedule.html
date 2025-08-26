@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Study Schedule</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #4e6ef5;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #3a56d4;
+            transform: translateY(-2px);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: calc(100% - 40px);
+            top: 20px;
+            z-index: 1000;
+            border-radius: 10px;
+            margin: 0 20px;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #4e6ef5;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #4e6ef5;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Schedule Section */
+        .schedule {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 40px;
+        }
+        
+        .schedule-title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+        }
+        
+        .time-block {
+            display: flex;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .time-block:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .time {
+            padding: 15px;
+            min-width: 120px;
+            text-align: center;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .activity {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+        
+        .study-details {
+            background: #e8f4fc;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #bdc3c7;
+        }
+        
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+        
+        .icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .sleep {
+            background: #9b59b6;
+        }
+        
+        .gym {
+            background: #e74c3c;
+        }
+        
+        .lunch {
+            background: #f39c12;
+        }
+        
+        .study {
+            background: #2ecc71;
+        }
+        
+        .free {
+            background: #3498db;
+        }
+        
+        .college {
+            background: #1abc9c;
+        }
+        
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            margin: 10px;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        /* Tips Section */
+        .tips {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-top: 40px;
+        }
+        
+        .tips-title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+        
+        .tips-list {
+            list-style: none;
+        }
+        
+        .tips-list li {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tips-list li i {
+            color: #3498db;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            padding: 20px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .time {
+                min-width: 100px;
+            }
+            
+            .stats {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar">
+                <a href="#" class="logo">StudyPlan</a>
+                <ul class="nav-links">
+                    <li><a href="#schedule">Schedule</a></li>
+                    <li><a href="#stats">Statistics</a></li>
+                    <li><a href="#tips">Productivity Tips</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1>My Study Schedule</h1>
+            <p>A well-structured daily routine for optimal productivity and learning</p>
+            <a href="#schedule" class="btn">View Schedule</a>
+        </section>
+
+        <section id="schedule" class="schedule">
+            <h2 class="schedule-title">Daily Study Schedule</h2>
+            
+            <div class="time-block">
+                <div class="time sleep">11PM - 6AM</div>
+                <div class="activity"><span class="icon">🛌</span> SLEEP (7 hours)</div>
+            </div>
+            
+            <div class="time-block">
+                <div class="time gym">6AM - 7:30AM</div>
+                <div class="activity"><span class="icon">💪</span> GYM (1.5 hours)</div>
+            </div>
+            
+            <div class="time-block">
+                <div class="time lunch">7:30AM - 9AM</div>
+                <div class="activity"><span class="icon">🍲</span> LUNCH + GETTING READY (1.5 hours)</div>
+            </div>
+            
+            <div class="time-block">
+                <div class="time study">9AM - 6PM</div>
+                <div class="activity"><span class="icon">📚</span> STUDY POINT (9 hours)</div>
+            </div>
+            
+            <div class="study-details">
+                <h3>Study Point Breakdown:</h3>
+                <div class="detail-item">
+                    <span>Classes</span>
+                    <span>4 hours</span>
+                </div>
+                <div class="detail-item">
+                    <span>Revision</span>
+                    <span>2 hours</span>
+                </div>
+                <div class="detail-item">
+                    <span>G.K. Study</span>
+                    <span>1.5 hours</span>
+                </div>
+                <div class="detail-item">
+                    <span>NCERT Reading</span>
+                    <span>1 hour</span>
+                </div>
+                <div class="detail-item">
+                    <span>YT Videos</span>
+                    <span>0.5 hours</span>
+                </div>
+            </div>
+            
+            <div class="time-block">
+                <div class="time free">6PM - 8PM</div>
+                <div class="activity"><span class="icon">🎮</span> FREE TIME + DINNER (2 hours)</div>
+            </div>
+            
+            <div class="time-block">
+                <div class="time college">8PM - 10:30PM</div>
+                <div class="activity"><span class="icon">🎓</span> COLLEGE + REMAINING STUDY (2.5 hours)</div>
+            </div>
+            
+            <div class="time-block">
+                <div class="time free">10:30PM - 11PM</div>
+                <div class="activity"><span class="icon">😌</span> FREE TIME (0.5 hours)</div>
+            </div>
+        </section>
+
+        <section id="stats" class="stats">
+            <div class="stat-box">
+                <div class="stat-number">17</div>
+                <div class="stat-label">Waking Hours</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">11.5</div>
+                <div class="stat-label">Study Hours</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">2.5</div>
+                <div class="stat-label">Free Hours</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Sleep Hours</div>
+            </div>
+        </section>
+
+        <section id="tips" class="tips">
+            <h2 class="tips-title">Productivity Tips</h2>
+            <ul class="tips-list">
+                <li>
+                    <i class="fas fa-lightbulb"></i>
+                    <div>Use the Pomodoro technique during study blocks (25 min focus, 5 min break)</div>
+                </li>
+                <li>
+                    <i class="fas fa-lightbulb"></i>
+                    <div>Schedule the most challenging tasks during your peak energy hours</div>
+                </li>
+                <li>
+                    <i class="fas fa-lightbulb"></i>
+                    <div>Use free time for physical movement to counter long study sessions</div>
+                </li>
+                <li>
+                    <i class="fas fa-lightbulb"></i>
+                    <div>Ensure study environment is well-lit and free from distractions</div>
+                </li>
+                <li>
+                    <i class="fas fa-lightbulb"></i>
+                    <div>Combine similar tasks to reduce context switching</div>
+                </li>
+                <li>
+                    <i class="fas fa-lightbulb"></i>
+                    <div>Review and adjust schedule weekly based on what's working</div>
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>Created with my study schedule • 2023</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple JavaScript for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
