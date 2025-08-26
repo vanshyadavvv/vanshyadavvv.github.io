@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Learning Resources</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .filter-btn:hover {
+            background: #ffcc00;
+            transform: translateY(-2px);
+        }
+        
+        .filter-btn.active {
+            background: #ffcc00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-header {
+            padding: 20px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .resource-list {
+            list-style: none;
+        }
+        
+        .resource-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+        
+        .resource-icon {
+            margin-right: 12px;
+            width: 30px;
+            height: 30px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+        }
+        
+        /* Category colors */
+        .category-apps .card-header { background: #4285F4; }
+        .category-games .card-header { background: #EA4335; }
+        .category-videos .card-header { background: #FBBC05; }
+        .category-music .card-header { background: #34A853; }
+.category-speaking .card-header { background: #9C27B0; }
+        .category-printables .card-header { background: #FF9800; }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spanish Learning Resources</h1>
+            <p class="subtitle">A collection of tools, activities, and platforms to make learning Spanish engaging and effective</p>
+        </header>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-category="all">All Resources</button>
+            <button class="filter-btn" data-category="category-apps">Apps & Platforms</button>
+            <button class="filter-btn" data-category="category-games">Games & Activities</button>
+            <button class="filter-btn" data-category="category-videos">Videos & Listening</button>
+            <button class="filter-btn" data-category="category-music">Music & Culture</button>
+            <button class="filter-btn" data-category="category-speaking">Speaking & Interaction</button>
+            <button class="filter-btn" data-category="category-printables">Printables & Visuals</button>
+        </div>
+        
+        <div class="resources-grid">
+            <!-- Apps & Platforms -->
+            <div class="resource-card category-apps">
+                <div class="card-header">
+                    <i class="fas fa-mobile-alt"></i> Apps & Platforms
+                </div>
+                <div class="card-content">
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fas fa-gamepad"></i></span>
+                            <span>Duolingo / LingQ / Busuu → Gamified vocabulary & grammar</span>
+                        </li>
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fas fa-comments"></i></span>
+                            <span>HelloTalk / Tandem → Language exchange with native speakers</span>
+                        </li>
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fas fa-layer-group"></i></span>
+                            <span>Quizlet → Flashcards + games (great for group competitions)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Games & Activities -->
+            <div class="resource-card category-games">
+                <div class="card-header">
+                    <i class="fas fa-dice"></i> Games & Group Activities
+                </div>
+                <div class="card-content">
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fas fa-theater-masks"></i></span>
+                            <span>Charades in Spanish → Act out verbs or phrases</span>
+                        </li>
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fas fa-palette"></i></span>
+                            <span>Pictionary → Draw vocabulary items</span>
+                        </li>
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fas fa-ban"></i></span>
+                            <span>Taboo → Describe a word without saying it</span>
+                        </li>
+                        <li class="resource-item">
+<span class="resource-icon"><i class="fas fa-th-list"></i></span>
+                            <span>Bingo → With Spanish numbers, animals, or common words</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Videos & Listening -->
+            <div class="resource-card category-videos">
+                <div class="card-header">
+                    <i class="fas fa-video"></i> Videos & Listening
+                </div>
+                <div class="card-content">
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fab fa-youtube"></i></span>
+                            <span>Dreaming Spanish → Comprehensible input, stories with visuals</span>
+                        </li>
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fab fa-youtube"></i></span>
+                            <span>Easy Spanish → Street interviews with subtitles</span>
+                        </li>
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fas fa-tv"></i></span>
+                            <span>Netflix Shows → With Spanish Audio + Subtitles</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Music & Culture -->
+            <div class="resource-card category-music">
+                <div class="card-header">
+                    <i class="fas fa-music"></i> Music & Culture
+                </div>
+                <div class="card-content">
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fas fa-headphones"></i></span>
+                            <span>LyricsTraining.com → Fill in missing lyrics</span>
+                        </li>
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fab fa-spotify"></i></span>
+                            <span>Spotify playlists → Beginner-friendly Spanish music</span>
+                        </li>
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fas fa-utensils"></i></span>
+                            <span>Cultural activities → Food, festivals, slang, etc.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Speaking & Interaction -->
+            <div class="resource-card category-speaking">
+                <div class="card-header">
+                    <i class="fas fa-microphone"></i> Speaking & Interaction
+                </div>
+                <div class="card-content">
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fas fa-user-friends"></i></span>
+                            <span>Role plays → Ordering food, introducing yourself, shopping</span>
+                        </li>
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fas fa-comment-dots"></i></span>
+                            <span>Two Truths and a Lie → Everyone shares 3 statements</span>
+                        </li>
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fas fa-book"></i></span>
+                            <span>Story building → Each person adds one sentence</span>
+</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Printables & Visuals -->
+            <div class="resource-card category-printables">
+                <div class="card-header">
+                    <i class="fas fa-print"></i> Printables & Visual Aids
+                </div>
+                <div class="card-content">
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fas fa-images"></i></span>
+                            <span>Flashcards with pictures instead of English translations</span>
+                        </li>
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fas fa-chalkboard"></i></span>
+                            <span>Posters with common phrases</span>
+                        </li>
+                        <li class="resource-item">
+                            <span class="resource-icon"><i class="fas fa-calendar-day"></i></span>
+                            <span>"Word of the Day" board in your group</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const resourceCards = document.querySelectorAll('.resource-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.getAttribute('data-category');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // Filter cards
+                    resourceCards.forEach(card => {
+                        if (category === 'all' || card.classList.contains(category)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
